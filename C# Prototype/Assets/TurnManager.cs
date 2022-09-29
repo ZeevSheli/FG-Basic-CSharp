@@ -6,7 +6,7 @@ public class TurnManager : MonoBehaviour
 {
     [SerializeField] private GameObject player1;
     [SerializeField] private GameObject player2;
-    [SerializeField] private TurnManager instance;
+    public TurnManager instance;
     bool player1_Activate;
     bool player2_Activate;
     public TurnManager Instance { get => instance; set => instance = value; }

@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class pcMovement : MonoBehaviour
 {
+    private CharacterController controller;
+    private Vector3 playerVelocity;
+    private bool groundedPlayer;
+    private float playerSpeed = 2.0f;
+    private float jumpHeight = 1.0f;
+    private float gravityValue = -9.81f;
+
     // Start is called before the first frame update
     void Start()
     {
-        //velocity = 0
+
     }
 
     // Update is called once per frame
@@ -16,6 +23,15 @@ public class pcMovement : MonoBehaviour
         // if input is pressed, move character
 
 
+    //  if (Input.GetKeyDown(KeyCode.Space))
+        {
+         //   if (Raycast(true))
+            {
+            //add
+            }
+        }
         // if on the ground, using raycast, the player can jump. Tag could be used.
+    
+    
     }
 }

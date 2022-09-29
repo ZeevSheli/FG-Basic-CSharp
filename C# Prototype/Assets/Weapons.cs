@@ -15,7 +15,7 @@ public class Weapons : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            TurnManager.SwitchTurn();
+            TurnManager.SwitchTurn(true);
         }
         
         // if shot, remove ability to shoot and trigger instance of turnmanager
