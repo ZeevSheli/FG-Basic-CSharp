@@ -4,15 +4,46 @@ using UnityEngine;
 
 public class TurnManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameObject player1;
+    [SerializeField] private GameObject player2;
+    [SerializeField] private TurnManager instance;
+    bool player1_Activate;
+    bool player2_Activate;
+    public TurnManager Instance { get => instance; set => instance = value; }
+
+    public void Awake()
     {
-        
+        if (instance != null)
+        {
+            Destroy(gameObject);
+    }
+        else
+        {
+            instance = this;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    void Start()
+
     {
-        // if called, the turn manager will switch camera1 to camera2 and enable movement for p1 or p2 respectively, and vice versa, if the active camera is camera1 or if the active camera is 2
+        player1.SetActive(true);
     }
+
+
+    void SwitchTurn()
+    {
+        if (player1.activeInHierarchy)
+        {
+            player1.SetActive(false);
+            player2.SetActive(true);
+            
+        }
+        else if (player2.activeInHierarchy)
+        {
+            player2.SetActive(false);
+            player1.SetActive(true);
+
+        }
+    }
+
 }
