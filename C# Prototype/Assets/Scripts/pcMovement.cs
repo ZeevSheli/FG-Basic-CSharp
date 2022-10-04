@@ -22,7 +22,7 @@ public class pcMovement : MonoBehaviour
         float horizontal = Input.GetAxisRaw("Horizontal");
 
         //make sure the character controller do not move on the z axis
-        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;   
+        Vector3 direction = new Vector3(vertical, 0f, horizontal);   
 
         //the code below will have the player smoothly move and look in the correct way
             if (direction.magnitude >= 0.1f)
