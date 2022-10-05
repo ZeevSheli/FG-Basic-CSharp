@@ -7,27 +7,57 @@ public class Movement : MonoBehaviour
     [SerializeField] private Rigidbody character;
     [SerializeField] private float speed = 2f;
     private bool isGrounded;
- 
+
+    public float gravity = -10;
+    public float turnSmoothVelocity; 
+    public float turnSmoothTime;
+    public CharacterController characterController;
+    public GameObject player;
+    public Transform cam;
+    public Vector3 moveDir;
+    public Vector3 direction;
+    private float verticalVelocity;
+
+
+
+    private Vector3 velocity;
+    public float jump = 10f;
+
     void Update()
     {
-        if (Input.GetAxis("Horizontal") != 0)
-        {
-            transform.Translate(transform.right * speed * Time.deltaTime * Input.GetAxis("Horizontal"));
-        }
+        float horizontal = Input.GetAxisRaw("Horizontal");
+        float vertical = Input.GetAxisRaw("Vertical");
+        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
 
-        if (Input.GetAxis("Vertical") != 0)
+        if (direction.magnitude >= 0.1f)
         {
-            transform.Translate(transform.forward * speed * Time.deltaTime * Input.GetAxis("Vertical"));
-        }
+            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+            float angle = Mathf.SmoothDampAngle(player.transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+            player.transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
-        if (Input.GetKeyDown(KeyCode.Space) && !isGrounded)
-        {
-            Jump();
-            Debug.Log("Should jump here");
+            Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+            characterController.Move(moveDir.normalized * speed * Time.deltaTime);
         }
 
         IsGrounded();
-    }
+
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        {
+            Debug.Log("yay");
+            velocity.y = jump;
+        }
+        
+        else
+        {
+            velocity.y += gravity * Time.deltaTime;
+        }
+            characterController.Move(velocity * Time.deltaTime);
+
+}
+    
+     
+    
+    
     void IsGrounded()
     {
         RaycastHit hit;
@@ -37,7 +67,6 @@ public class Movement : MonoBehaviour
         if (Physics.Raycast(transform.position, direction, out hit, distance))
         {
             isGrounded = true;
-            Debug.Log("Grounded y'all!");
 
         }
         else

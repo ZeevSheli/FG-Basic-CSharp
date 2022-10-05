@@ -30,19 +30,21 @@ public class Health : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void OnTriggerEnter(Collider other)
+
+    void OnTriggerEnter(Collider collider)
         {
-            if (other.CompareTag("projectile") && currentHealth >= 2)
+            if (collider.CompareTag("Bullet") && currentHealth >= 2)
             {
-               currentHealth--;
-               DisplayHealth();
+                Debug.Log("Hurt");
+                currentHealth--;
             }
-            else if (other.CompareTag("projectile") && currentHealth <= 1)
+            else if (collider.CompareTag("Bullet") && currentHealth <= 1)
             {
                Die();
             }
-        }
+
+        DisplayHealth();
+    }
 
     void DisplayHealth()
     {
@@ -63,16 +65,20 @@ public class Health : MonoBehaviour
 
     void Die()
     {
-            if (this.tag == "Player1")
-            {
-        Debug.Log("Player2 wins!");
-            }
-           if (this.tag == "Player2")
-            {
-        Debug.Log("Player1 wins!");
-            }
-    
-        Time.timeScale = 0;
+        if (this.tag == "Player1")
+        {
+            Debug.Log("Player2 wins!");
+            Player2Win.SetActive(true);
+            Time.timeScale = 0;
+        }
+        if (this.tag == "Player2")
+        {
+            Debug.Log("Player1 wins!");
+            Player1Win.SetActive(true);
+            Time.timeScale = 0;
+        }
+
+      
     }
 
 
