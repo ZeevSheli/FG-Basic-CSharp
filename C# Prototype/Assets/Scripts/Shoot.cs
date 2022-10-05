@@ -21,8 +21,14 @@ public class Shoot : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            Shooting();
+        }
+    
+     void Shooting()
+        {
             GameObject projectile = Instantiate(bullet, transform.position, transform.rotation);
             projectile.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, launchVelocityY, launchVelocityZ));
         }
+    
     }
 }
