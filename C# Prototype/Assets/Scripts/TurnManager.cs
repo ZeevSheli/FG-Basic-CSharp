@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class TurnManager : MonoBehaviour
 {
-    private static TurnManager instance;
+    public static TurnManager instance;
 
     public int currentTurn;
     public int player1Turn = 1;
@@ -13,15 +13,19 @@ public class TurnManager : MonoBehaviour
 
     public GameObject player2;
     public Movement player2Movement;
-    public Shoot player2Shoot;
     public GameObject player2Camera;
     public GameObject player2FreeLook;
+    public GameObject player2Gun;
 
     public GameObject player1;
     public Movement player1Movement;
-    public Shoot player1Shoot;
     public GameObject player1Camera;
     public GameObject player1FreeLook;
+    public GameObject player1Gun;
+
+    private bool isCoroutineExecuting = false;
+
+    public bool hasShot = false;
 
     private void Awake()
     {
@@ -35,27 +39,38 @@ public class TurnManager : MonoBehaviour
         }
     }
 
+
+
     void Start()
     {
         currentTurn = player1Turn;
-        Player1Turn();
+        StartCoroutine(Player1Turn());
     }
 
-   void Update()
+    void Update()
     {
-        if (currentTurn == 1 && Input.GetMouseButtonDown(0))
+        if (currentTurn == 1 && !isCoroutineExecuting && hasShot)
         {
-            Player2Turn();
+            StartCoroutine(Player2Turn());
         }
-        else if (currentTurn == 2 && Input.GetMouseButtonDown(0))
+        else if (currentTurn == 2 && !isCoroutineExecuting && hasShot)
         {
-            Player1Turn();
+            StartCoroutine(Player1Turn());
         }
     }
-   void Player2Turn()
+
+    IEnumerator Player2Turn()
     {
-        player2Movement.enabled = true;  
+        isCoroutineExecuting = true;
+        hasShot = false;
+
         player1Movement.enabled = false;
+        player1Gun.SetActive(false);
+
+        yield return new WaitForSeconds(1f);
+
+        player2Movement.enabled = true;
+        player2Gun.SetActive(true);
 
         player2FreeLook.SetActive(true);
         player1FreeLook.SetActive(false);
@@ -64,15 +79,22 @@ public class TurnManager : MonoBehaviour
         player1Camera.SetActive(false);
 
         currentTurn = 2;
+
+        isCoroutineExecuting = false;
     }
 
-   void Player1Turn()
+    IEnumerator Player1Turn()
     {
-        player1Movement.enabled = true;
-        player2Movement.enabled = false;
+        isCoroutineExecuting = true;
+        hasShot = false;
 
-        player1Shoot.enabled = true;
-        player2Shoot.enabled = false;
+        player2Movement.enabled = false;
+        player2Gun.SetActive(false);
+
+        yield return new WaitForSeconds(1f);
+
+        player1Movement.enabled = true;
+        player1Gun.SetActive(true);
 
         player1FreeLook.SetActive(true);
         player2FreeLook.SetActive(false);
@@ -82,5 +104,7 @@ public class TurnManager : MonoBehaviour
         player1Camera.SetActive(true);
 
         currentTurn = 1;
+
+        isCoroutineExecuting = false;
     }
 }

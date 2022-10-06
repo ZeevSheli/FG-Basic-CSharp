@@ -32,12 +32,12 @@ public class Health : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
         {
-            if (collider.CompareTag("Bullet") && currentHealth >= 2)
+            if (collider.CompareTag("Bullet2") && currentHealth >= 2)
             {
-                Debug.Log("Hurt");
+                Debug.Log("Player1 ouchie");
                 currentHealth--;
             }
-            else if (collider.CompareTag("Bullet") && currentHealth <= 1)
+            else if (collider.CompareTag("Bullet2") && currentHealth <= 1)
             {
                Die();
             }

@@ -23,12 +23,15 @@ public class Shoot : MonoBehaviour
         {
             Shooting();
         }
+        
+     
     
-     void Shooting()
-        {
-            GameObject projectile = Instantiate(bullet, transform.position, transform.rotation);
-            projectile.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, launchVelocityY, launchVelocityZ));
-        }
-    
+    }
+    void Shooting()
+    {
+        GameObject projectile = Instantiate(bullet, transform.position, transform.rotation);
+        projectile.GetComponent<Rigidbody>().AddRelativeForce(new Vector3(0, launchVelocityY, launchVelocityZ));
+        TurnManager.instance.hasShot = true;
+
     }
 }

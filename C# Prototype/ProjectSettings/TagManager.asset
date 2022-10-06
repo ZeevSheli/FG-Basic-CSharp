@@ -8,6 +8,16 @@ TagManager:
   - New tag
   - Player1
   - Player2
+  - Win Collider
+  - Water Recharge
+  - Throw Projectile
+  - Slap Sphere
+  - Cheer Cube
+  - Locker Digit
+  - Spit
+  - Hurtful Ground
+  - Homing Projectile
+  - Bullet2
   layers:
   - Default
   - TransparentFX
