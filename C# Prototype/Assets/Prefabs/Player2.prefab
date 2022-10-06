@@ -235,7 +235,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 82ef0d35d68026e4c911d7ebe8b9d36b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -266,12 +266,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6772646590103949649}
-  - component: {fileID: 6772646590103949660}
   - component: {fileID: 7325613833568967070}
   - component: {fileID: 2211039931470496862}
+  - component: {fileID: 5170078449568444489}
   m_Layer: 0
   m_Name: Player2
-  m_TagString: Player1
+  m_TagString: Player2
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -294,25 +294,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6772646590103949660
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6772646590103949650}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b960dd6980a058942b7ee5be3bd95537, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentHealth: 0
-  MaxHealth: 3
-  heart1: {fileID: 6772646589001738068}
-  heart2: {fileID: 6772646590392115148}
-  heart3: {fileID: 6772646590640586142}
-  Player2Win: {fileID: 0}
-  Player1Win: {fileID: 0}
 --- !u!114 &7325613833568967070
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -354,6 +335,25 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5170078449568444489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6772646590103949650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 19400e88001c50941b4c7af317379179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentHealth: 0
+  MaxHealth: 3
+  heart1: {fileID: 6772646589001738068}
+  heart2: {fileID: 6772646590392115148}
+  heart3: {fileID: 6772646590640586142}
+  Player1Win: {fileID: 0}
+  background: {fileID: 0}
 --- !u!1 &6772646590154341339
 GameObject:
   m_ObjectHideFlags: 0

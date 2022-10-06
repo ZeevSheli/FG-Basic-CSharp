@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Health : MonoBehaviour
+public class Health2 : MonoBehaviour
 {
     [SerializeField] private int currentHealth;
     [SerializeField] private int MaxHealth = 3;
@@ -11,7 +11,7 @@ public class Health : MonoBehaviour
     public GameObject heart2;
     public GameObject heart3;
 
-    public GameObject Player2Win;
+    public GameObject Player1Win;
     public GameObject background;
 
 
@@ -24,7 +24,7 @@ public class Health : MonoBehaviour
         heart2.SetActive(true);
         heart3.SetActive(true);
 
-        Player2Win.SetActive(false);
+        Player1Win.SetActive(false);
         background.SetActive(false);
 
     }
@@ -34,7 +34,7 @@ public class Health : MonoBehaviour
         {
             if (collider.CompareTag("Bullet") && currentHealth >= 2)
             {
-                Debug.Log("Hurt");
+                Debug.Log("Player2 ouchie");
                 currentHealth--;
             }
             else if (collider.CompareTag("Bullet") && currentHealth <= 1)
@@ -64,10 +64,10 @@ public class Health : MonoBehaviour
 
     void Die()
     {
-            Debug.Log("Player2 wins!");
-            Player2Win.SetActive(true);
+            Debug.Log("Player1 wins!");
+            Player1Win.SetActive(true);
             background.SetActive(true);
-            Time.timeScale = 0;
+            Time.timeScale = 0; 
     }
 
 

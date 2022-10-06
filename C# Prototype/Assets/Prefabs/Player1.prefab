@@ -137,7 +137,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: be10ab485997bc14e9a5e8abcd49f5f4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -360,6 +360,7 @@ MonoBehaviour:
   heart3: {fileID: 4984944918656163499}
   Player2Win: {fileID: 0}
   Player1Win: {fileID: 0}
+  background: {fileID: 0}
 --- !u!114 &9041710953524574891
 MonoBehaviour:
   m_ObjectHideFlags: 0
